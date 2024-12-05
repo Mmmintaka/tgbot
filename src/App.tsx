@@ -21,17 +21,9 @@ function App() {
 
   const [amount, setAmount] = useState("0.002"); // 默认值为 0.002 TON
   const [tonChain, setTonChain] = useState("");
-
-  useEffect(() => {
-    // 获取 URL 查询参数
-    const urlParams = new URLSearchParams(window.location.search);
-    const tonChainParam = urlParams.get("tonChain");
-    if (tonChainParam) {
-      setTonChain(tonChainParam);
-      console.log("接收到的 tonChain:", tonChainParam);
-    }
-  }, []);
-
+  launchParams &&
+    launchParams?.startParam &&
+    setTonChain(launchParams.startParam);
   const sendTransaction = async () => {
     const transaction = {
       validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
