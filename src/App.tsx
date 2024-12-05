@@ -50,7 +50,15 @@ function App() {
         )}
       </div>
 
-      <div>传递进来的地址： {launchParams.startParam}</div>
+      <div>
+        传递进来的地址：
+        {launchParams.startParam
+          ? `${launchParams.startParam.slice(
+              0,
+              6
+            )}...${launchParams.startParam.slice(-4)}`
+          : "没有地址"}
+      </div>
 
       <div className="flex flex-col mt-4 gap-2 border border-solid border-red-400 p-3 rounded-[20px]">
         <div>model state: {state?.status}</div>
