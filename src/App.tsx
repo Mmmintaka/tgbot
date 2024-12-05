@@ -19,18 +19,13 @@ function App() {
   console.log(launchParams, "123");
 
   const [amount, setAmount] = useState("0.002"); // 默认值为 0.002 TON
-  const [tonChain, setTonChain] = useState("");
-
-  launchParams &&
-    launchParams?.startParam &&
-    setTonChain(launchParams.startParam);
 
   const sendTransaction = async () => {
     const transaction = {
       validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
       messages: [
         {
-          address: tonChain, // 使用接收到的 tonChain
+          address: launchParams.startParam, // 使用接收到的 tonChain
           amount: Number(amount) * 10 ** 9,
         },
       ],
@@ -55,7 +50,7 @@ function App() {
         )}
       </div>
 
-      <div>传递进来的地址： {tonChain}</div>
+      <div>传递进来的地址： {launchParams.startParam}</div>
 
       <div className="flex flex-col mt-4 gap-2 border border-solid border-red-400 p-3 rounded-[20px]">
         <div>model state: {state?.status}</div>
