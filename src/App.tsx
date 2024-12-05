@@ -7,11 +7,17 @@ import {
 } from "@tonconnect/ui-react";
 import { useState } from "react";
 
+import { retrieveLaunchParams } from "@telegram-apps/sdk";
+
 function App() {
   const [tonConnectUI] = useTonConnectUI();
   const { state, open } = useTonConnectModal();
   const userFriendlyAddress = useTonAddress();
   const wallet = useTonWallet();
+
+  const launchParams = retrieveLaunchParams();
+
+  console.log(launchParams, "123");
 
   const [amount, setAmount] = useState("0.002"); // 默认值为 0.002 TON
   const [tonChain, setTonChain] = useState("");
