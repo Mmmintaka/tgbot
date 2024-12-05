@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import {
   useTonAddress,
   useTonConnectModal,
@@ -21,9 +20,11 @@ function App() {
 
   const [amount, setAmount] = useState("0.002"); // 默认值为 0.002 TON
   const [tonChain, setTonChain] = useState("");
+
   launchParams &&
     launchParams?.startParam &&
     setTonChain(launchParams.startParam);
+
   const sendTransaction = async () => {
     const transaction = {
       validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
