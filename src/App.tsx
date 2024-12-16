@@ -66,7 +66,7 @@ function App() {
       </div>
 
       <div className="flex flex-col mt-4 mb-5 gap-2 border border-solid border-red-400 p-3 rounded-[20px]">
-        current wallet:
+        current wallet:123123
         {wallet && (
           <>
             <span>Device: {wallet.device.appName}</span>
