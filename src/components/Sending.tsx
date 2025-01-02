@@ -1,5 +1,3 @@
-import React from "react";
-
 const Sending = () => {
   return (
     <div className="absolute inset-0 flex *:text-[14px]   items-center flex-col  justify-center">

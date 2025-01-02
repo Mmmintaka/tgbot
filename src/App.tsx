@@ -10,7 +10,6 @@ import Connect from "./components/Connect";
 import IconImg from "../public/images/icon.jpeg";
 import { handleAmountChange } from "./utils/amountHelper";
 import Sending from "./components/Sending";
-import { closingBehavior, postEvent } from "@telegram-apps/sdk";
 
 function App() {
   const [tonConnectUI] = useTonConnectUI();
@@ -19,7 +18,6 @@ function App() {
 
   const [tonAddress, setTonAddress] = useState("");
   const [tonPrice, setTonPrice] = useState("");
-  const [finish, setFinish] = useState("");
 
   const [sendSuccess, setSendSuccess] = useState(false);
 
@@ -29,18 +27,12 @@ function App() {
     const params = new URLSearchParams(window.location.search);
     const tonAddressParam = params.get("tonAddress");
     const tonPriceParm = params.get("price");
-    const finishParam = params.get("finish");
 
     if (tonAddressParam) setTonAddress(tonAddressParam);
     if (tonPriceParm) setTonPrice(tonPriceParm);
-    if (finishParam) setFinish(finishParam);
   }, []);
 
   const [amount, setAmount] = useState("0.002"); // 默认值为 0.002 TON
-
-  const closeApp = () => {
-    postEvent("web_app_close");
-  };
 
   useEffect(() => {
     const getBalance = async () => {
@@ -153,10 +145,7 @@ function App() {
         )}
 
         {sendSuccess ? (
-          <button
-            onClick={() => closeApp()}
-            className=" font-semibold absolute bottom-9 h-[52px] text-black  w-[calc(100%_-_40px)]  rounded-[22px] bg-white"
-          >
+          <button className=" font-semibold absolute bottom-9 h-[52px] text-black  w-[calc(100%_-_40px)]  rounded-[22px] bg-white">
             我知道了
           </button>
         ) : userFriendlyAddress ? (
